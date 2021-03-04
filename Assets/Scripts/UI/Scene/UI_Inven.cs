@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,11 +28,9 @@ public class UI_Inven : UI_Scene
         // 실제 인벤토리 갯수
         for (int i = 0; i < 8; i++)
         {
-            GameObject item = Managers.Resource.Instantiate("UI/Scene/UI_Inven_Item");
-            item.transform.SetParent(gridPanel.transform);
-
-            UI_Inven_Item inventItem =  Util.GetOrAddComponent<UI_Inven_Item>(item);
-            inventItem.SetInfo($"wlqgodrja{i}번");
+            GameObject item = Managers.UI.MakeSubItem<UI_Inven_Item>(gridPanel.transform).gameObject;
+            UI_Inven_Item inventItem = item.GetOrAddComponent<UI_Inven_Item>();
+            inventItem.SetInfo($"집행검{i}번");
         }
     }
 
